@@ -1,2 +1,7 @@
 # AVR_calculation
-An application to calculate the AVR measurement at 1-1.5DD in a fundus image was created using Streamlit.
+![image](Banner.PNG)
+This is a Python application that calculates the arteriovenous ratio (AVR) measurement in a fundus image by using Streamlit as its interface. This project is part of the thesis _"Early Hypertensive Retinopathy detection by levaraging salient regions using Deep Learning"_, which was funded by CONACYT and developed at UAQ.
+
+The ROI is the area that delimits where the vessels’ width will be measured. It comprises two defined diameters centered at the OD. The proposed methodoly uses the same diameters as explained in _“Automated measurement of the arteriolar-to-venular width ratio in digital color fundus photographs”_ by Niemeijer et al., to maintain a golden standar. Those values are from 1DD (DiskDiameter) to 1.5DD. The width of arteries and veins crossing at the established circumferences are measured in steps of 0.1 from the lower diameter to the upper one. It is important to note that since all vessels have been classified, the system measures them all with a technique named ConvexHull.
+
+During each step, the application compares all resulting widths and selects the 6 widest arteries for CRAE calculation using equation 1.2, and then selects the 6 widest veins for CRVE calculation using equation 1.3. After both CRAE and CRVE have been calculated, an AVR measure is computed using equation 1.1. Once all steps have been completed, each corresponding AVR result is averaged to deliver a final value.
